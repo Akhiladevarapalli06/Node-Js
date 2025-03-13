@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email & DOB Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    input[type="email"], input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .message {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Email & DOB Validation</h2>
+    <input type="email" id="email" placeholder="Enter your email">
+    <input type="date" id="dob">
+    <button onclick="validateInputs()">Validate</button>
+    <div id="emailMessage" class="message"></div>
+    <div id="dobMessage" class="message"></div>
+  </div>
+
+  <script>
+    function validateInputs() {
+      const email = document.getElementById('email').value;
+      const dob = document.getElementById('dob').value;
+      const emailMessage = document.getElementById('emailMessage');
+      const dobMessage = document.getElementById('dobMessage');
+
+      // Email Validation
+      if (email.endsWith('@gmail.com')) {
+        emailMessage.textContent = 'Valid Email ID';
+        emailMessage.style.color = 'green';
+      } else {
+        emailMessage.textContent = 'Invalid Email ID';
+        emailMessage.style.color = 'red';
+      }
+
+      // Date of Birth Validation
+      const today = new Date().toISOString().split('T')[0];
+      if (dob && dob <= today) {
+        dobMessage.textContent = 'Valid Date of Birth';
+        dobMessage.style.color = 'green';
+      } else {
+        dobMessage.textContent = 'Invalid Date of Birth';
+        dobMessage.style.color = 'red';
+      }
+    }
+  </script>
+</body>
+</html>
